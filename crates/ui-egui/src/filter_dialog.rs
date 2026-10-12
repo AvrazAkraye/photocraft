@@ -195,6 +195,10 @@ fn is_pixel_param_of(command: &str, key: &str) -> bool {
 /// interval) and Tree, whose branches are built from 6 px segments. On a reduced proxy those
 /// features come out k times too large (or a different tree grows), so these preview at full
 /// resolution: what the preview shows is what OK applies, as in Photoshop (#2063).
+///
+/// Sharpen, Sharpen More, Sharpen Edges, Find Edges, Emboss and Despeckle use fixed one-pixel
+/// kernels with no size parameter, so a proxy changes their look: edges average away, making
+/// the sharpening and edge detection invisible. These must preview at full resolution (#3929).
 const FULL_RESOLUTION_PREVIEW: &[&str] = &[
     "filter.distort.ripple",
     "filter.stylize.diffuse",
@@ -214,18 +218,9 @@ const FULL_RESOLUTION_PREVIEW: &[&str] = &[
     "filter.sharpen.sharpen",
     "filter.sharpen.sharpenMore",
     "filter.sharpen.sharpenEdges",
-    "filter.sharpen.unsharpMask",
-    "filter.sharpen.smartSharpen",
-    "filter.other.highPass",
     "filter.stylize.findEdges",
     "filter.stylize.emboss",
-    "filter.noise.median",
     "filter.noise.despeckle",
-    "filter.other.maximum",
-    "filter.other.minimum",
-    "filter.blur.motionBlur",
-    "filter.blur.boxBlur",
-    "filter.blur.surfaceBlur",
 ];
 
 /// Whether `command` with `params` previews at full resolution: [`FULL_RESOLUTION_PREVIEW`], every
@@ -1459,6 +1454,12 @@ mod tests {
             ("filter.stylize.wind", json!({"method": "blast"})),
             ("filter.stylize.extrude", json!({})),
             ("filter.render.tree", json!({"baseTreeType": 1})),
+            ("filter.sharpen.sharpen", json!({})),
+            ("filter.sharpen.sharpenMore", json!({})),
+            ("filter.sharpen.sharpenEdges", json!({})),
+            ("filter.stylize.findEdges", json!({})),
+            ("filter.stylize.emboss", json!({})),
+            ("filter.noise.despeckle", json!({})),
             ("filter.gallery.graphicPen", json!({})),
             ("filter.gallery.stainedGlass", json!({"cellSize": 10})),
             ("image.mode.indexedColor", json!({"colors": 16})),
