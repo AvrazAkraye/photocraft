@@ -211,6 +211,11 @@ const FULL_RESOLUTION_PREVIEW: &[&str] = &[
     "filter.stylize.wind",
     "filter.stylize.extrude",
     "filter.render.tree",
+    "filter.sharpen.sharpen",
+    "filter.sharpen.sharpenMore",
+    "filter.sharpen.sharpenEdges",
+    "filter.sharpen.unsharpMask",
+    "filter.sharpen.smartSharpen",
 ];
 
 /// Whether `command` with `params` previews at full resolution: [`FULL_RESOLUTION_PREVIEW`], every
