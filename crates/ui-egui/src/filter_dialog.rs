@@ -220,9 +220,12 @@ const FULL_RESOLUTION_PREVIEW: &[&str] = &[
     "filter.stylize.findEdges",
     "filter.stylize.emboss",
     "filter.noise.median",
+    "filter.noise.despeckle",
     "filter.other.maximum",
     "filter.other.minimum",
     "filter.blur.motionBlur",
+    "filter.blur.boxBlur",
+    "filter.blur.surfaceBlur",
 ];
 
 /// Whether `command` with `params` previews at full resolution: [`FULL_RESOLUTION_PREVIEW`], every
