@@ -216,6 +216,9 @@ const FULL_RESOLUTION_PREVIEW: &[&str] = &[
     "filter.sharpen.sharpenEdges",
     "filter.sharpen.unsharpMask",
     "filter.sharpen.smartSharpen",
+    "filter.other.highPass",
+    "filter.stylize.findEdges",
+    "filter.stylize.emboss",
 ];
 
 /// Whether `command` with `params` previews at full resolution: [`FULL_RESOLUTION_PREVIEW`], every
